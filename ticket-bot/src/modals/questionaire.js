@@ -18,6 +18,8 @@ export const displayQuestionaire = async (interaction, qGroup) => {
   modal.addComponents(...actionRows);
 
   await interaction.showModal(modal);
+
+  
 }
 
 const questionPagination = () => {}

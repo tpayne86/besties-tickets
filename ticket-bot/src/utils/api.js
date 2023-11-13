@@ -1,25 +1,25 @@
 import { TICKET_API_URL } from "./constants";
 
 export const getSettings = async () => {
-  const resp = await fetch(`${TICKET_API_URL}/servers`)
+  const resp = await fetch(`${TICKET_API_URL}/guilds`)
   return await resp.json();
 }
 
-export  const getPanelQuestions = async ({serverId,embedId}) => {
-  const resp = await fetch(`${TICKET_API_URL}/servers/${serverId}/panel/${embedId}/questions/`);
-
-  return await resp.json();
-}
-
-export const getPanelQuestionsByGroup = async ({serverId,embedId, qGroup}) => {
-  const resp = await fetch(`${TICKET_API_URL}/servers/${serverId}/panel/${embedId}/questions/${qgroup}`);
+export  const getPanelQuestions = async ({guildId,embedId}) => {
+  const resp = await fetch(`${TICKET_API_URL}/guilds/${guildId}/panel/${embedId}/questions/`);
 
   return await resp.json();
 }
 
+export const getPanelQuestionsByGroup = async ({guildId,embedId, qGroup}) => {
+  const resp = await fetch(`${TICKET_API_URL}/guilds/${guildId}/panel/${embedId}/questions/${qgroup}`);
 
-export const postUserAnswers = async ({serverId, ticketId, userData}) => {
-  const resp = await fetch(`${TICKET_API_URL}/servers/${serverId}/tickets/${ticketId}/answers`,
+  return await resp.json();
+}
+
+
+export const postUserAnswers = async ({guildId, ticketId, userData}) => {
+  const resp = await fetch(`${TICKET_API_URL}/guilds/${guildId}/tickets/${ticketId}/answers`,
     {  
       method: 'POST',
       mode: 'cors',
@@ -37,14 +37,14 @@ export const postUserAnswers = async ({serverId, ticketId, userData}) => {
   return await resp.json();
 }
 
-export const getUserAnswers = async ({serverId, ticketId}) => {
-  const resp = await fetch(`${TICKET_API_URL}/servers/${serverId}/tickets/${ticketId}/answers`);
+export const getUserAnswers = async ({guildsId, ticketId}) => {
+  const resp = await fetch(`${TICKET_API_URL}/guilds/${guildsId}/tickets/${ticketId}/answers`);
 
   return await resp.JSON();
 }
 
-export const getEmbeds = async ({serverId}) => {
-  const resp = await fetch(`${TICKET_API_URL}/servers/${serverId}/embeds`);
+export const getEmbeds = async ({guildsId}) => {
+  const resp = await fetch(`${TICKET_API_URL}/guilds/${guildsId}/embeds`);
 
   return await resp.JSON();
 }

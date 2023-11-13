@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-router.use('/guild', GuildRouter);
+router.use('/guilds', GuildRouter);
 
 module.exports = router;
